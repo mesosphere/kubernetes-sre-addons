@@ -1,0 +1,12 @@
+---
+kiam:
+  display_name: kiam
+  description: kiam
+  logo: kiam/logo.svg
+  category: other
+  overview: kiam/overview.md
+  resources:
+    links:
+      - type: support
+        title: Submit a Support Request
+        link: https://d2iq.com/services-and-support

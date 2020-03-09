@@ -1,0 +1,116 @@
+# ------------------------------------------------------------------------------
+# Testing Groups
+#
+# Addons need to be added to a testing group here to be validated and deploy &
+# cleanup tested. New addons need to be added to a group or CI will fail.
+#
+# NOTE: only the most recent revision of an addon will be tested. If you need
+# to run specific tests for older revisions, you'll need to write explicit tests
+# to cover that scenario.
+# ------------------------------------------------------------------------------
+
+# ------------------------------------------------------------------------------
+# General
+#
+# Addons in this testing group are simple, low on resource requirements and dont
+# require any dependencies or significant work to deploy.
+# ------------------------------------------------------------------------------
+general:
+    # - "dashboard"
+
+# ------------------------------------------------------------------------------
+# Backups
+#
+# Addons related to backup and restore tools are tested as part of this group.
+# ------------------------------------------------------------------------------
+backups:
+    # - "metallb"
+    # - "velero"
+
+# ------------------------------------------------------------------------------
+# SSO
+#
+# Addons related to our single sign-on stack are tested as part of this group
+# ------------------------------------------------------------------------------
+sso:
+    # - "konvoyconfig"
+    # - "external-dns"
+    # - "metallb"
+    # - "traefik"
+    # - "opsportal"
+    # - "cert-manager"
+    # - "dex"
+    # - "dex-k8s-authenticator"
+    # - "kube-oidc-proxy"
+    # - "reloader"
+    # - "gatekeeper"
+    # - "traefik-forward-auth"
+
+# ------------------------------------------------------------------------------
+# ElasticSearch
+#
+# All ElasticSearch related addons should be tested as a part of this group
+# ------------------------------------------------------------------------------
+elasticsearch:
+    # - "elasticsearch"
+    # - "elasticsearchexporter"
+    # - "kibana"
+    # - "fluentbit"
+    # - "elasticsearch-curator"
+
+# ------------------------------------------------------------------------------
+# Prometheus
+#
+# All Prometheus related addons should be tested as a part of this group
+# ------------------------------------------------------------------------------
+prometheus:
+    # - "prometheus"
+    # - "prometheusadapter"
+    # - "opsportal"
+
+# ------------------------------------------------------------------------------
+# Istio
+#
+# All Istio related addons should be tested as a part of this group
+# ------------------------------------------------------------------------------
+istio:
+    # - "prometheus"
+    # - "metallb"
+    # - "opsportal"
+    # - "cert-manager"
+    # - "istio"
+    # - "flagger"
+
+# ------------------------------------------------------------------------------
+# Local Volume Provisioner
+#
+# All Local Volume Provisioner related addons should be tested as a part of this group
+# ------------------------------------------------------------------------------
+localvolumeprovisioner:
+    # - "cert-manager"
+    # - "defaultstorageclass-protection"
+    # - "localvolumeprovisioner"
+
+# ------------------------------------------------------------------------------
+# Kiam
+#
+# All Kiam related addons and dependencies should be tested as a part of this group
+# ------------------------------------------------------------------------------
+kiam:
+    - "kiam"
+
+# ------------------------------------------------------------------------------
+# Disabled
+#
+# These are Addons which tests are currently disabled for.
+# ------------------------------------------------------------------------------
+disabled:
+    # these are addons which are currently filtered out of tests because we're waiting on features to be able to test them properly.
+    # See: https://jira.mesosphere.com/browse/DCOS-61664
+    # - "awsebscsiprovisioner"
+    # - "awsebsprovisioner"
+    # - "azuredisk-csi-driver"
+    # - "azurediskprovisioner"
+    # - "nvidia"
+    # - "gcpdisk-csi-driver"
+    # - "gcpdiskprovisioner"

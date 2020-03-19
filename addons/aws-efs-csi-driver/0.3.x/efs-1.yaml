@@ -1,0 +1,23 @@
+---
+apiVersion: kubeaddons.mesosphere.io/v1beta1
+kind: ClusterAddon
+metadata:
+  name: aws-efs-csi-driver
+  labels:
+    kubeaddons.mesosphere.io/name: aws-efs-csi-driver
+    kubeaddons.mesosphere.io/provides: aws-efs-csi-driver
+  annotations:
+    catalog.kubeaddons.mesosphere.io/addon-revision: "0.3.0-1"
+    appversion.kubeaddons.mesosphere.io/aws-efs-csi-drive: "0.3.0"
+    values.chart.helm.kubeaddons.mesosphere.io/aws-efs-csi-drive: "https://raw.githubusercontent.com/kubernetes-sigs/aws-efs-csi-driver/master/helm/values.yaml"
+spec:
+  namespace: kube-system
+  kubernetes:
+    minSupportedVersion: v1.15.6
+  cloudProvider:
+    - name: aws
+      enabled: true
+  chartReference:
+    chart: aws-efs-csi-driver
+    repo: https://github.com/kubernetes-sigs/aws-efs-csi-driver
+    version: 0.3.0

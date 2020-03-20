@@ -1,0 +1,43 @@
+---
+apiVersion: kubeaddons.mesosphere.io/v1beta1
+kind: ClusterAddon
+metadata:
+  name: efs-provisioner
+  labels:
+    kubeaddons.mesosphere.io/name: efs-provisioner
+    kubeaddons.mesosphere.io/provides: efs-provisioner
+  annotations:
+    catalog.kubeaddons.mesosphere.io/addon-revision: "2.4.0-1"
+    appversion.kubeaddons.mesosphere.io/aws-efs-csi-drive: "2.4.0"
+    values.chart.helm.kubeaddons.mesosphere.io/aws-efs-csi-drive: "https://raw.githubusercontent.com/helm/charts/9e152a4ea0fe44e21cca290396e287990c99978a/stable/efs-provisioner/values.yaml"
+spec:
+  namespace: kube-system
+  kubernetes:
+    minSupportedVersion: v1.15.6
+  cloudProvider:
+    - name: aws
+      enabled: true
+  chartReference:
+    chart: efs-provisioner
+    repo: stable/efs-provisioner
+    version: 0.11.0
+    values: |
+      ---
+      image:
+        repository: quay.io/external_storage/efs-provisioner
+        tag: v2.4.0
+        pullPolicy: IfNotPresent
+      busyboxImage:
+        repository: gcr.io/google_containers/busybox
+        tag: 1.27
+        pullPolicy: IfNotPresent
+      podAnnotations: {}
+        # iam.amazonaws.com/role: efs-provisioner-role
+      resources: {}
+      tolerations:
+        - effect: NoSchedule
+          operator: Exists
+        - effect: NoExecute
+          operator: Exists
+        - key: CriticalAddonsOnly
+          operator: Exists

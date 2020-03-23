@@ -1,0 +1,50 @@
+---
+apiVersion: kubeaddons.mesosphere.io/v1beta1
+kind: Addon
+metadata:
+  name: thanos
+  namespace: kubeaddons
+  labels:
+    kubeaddons.mesosphere.io/name: thanos
+  annotations:
+    catalog.kubeaddons.mesosphere.io/addon-revision: "0.3.14-1"
+    appversion.kubeaddons.mesosphere.io/thanos: "0.3.14"
+    endpoint.kubeaddons.mesosphere.io/thanos: "/ops/portal/thanos"
+    docs.kubeaddons.mesosphere.io/thanos: "https://thanos.io/getting-started.md/"
+    values.chart.helm.kubeaddons.mesosphere.io/thanos: "https://raw.githubusercontent.com/banzaicloud/banzai-charts/4a2e5274e8149c5c7d02583a6f2f109663c1b94e/thanos/values.yaml"
+spec:
+  kubernetes:
+    minSupportedVersion: v1.15.6
+  cloudProvider:
+    - name: aws
+      enabled: true
+    - name: azure
+      enabled: true
+    - name: gcp
+      enabled: true
+    - name: docker
+      enabled: false
+    - name: none
+      enabled: true
+  chartReference:
+    chart: thanos
+    repo: https://kubernetes-charts.banzaicloud.com
+    version: 0.3.18
+    values: |
+      ---
+      store:
+        enabled: true
+      bucket:
+        enabled: false
+      rule:
+        enabled: false
+      compact:
+        enabled: false
+      sidecar:
+        enabled: false
+      query:
+        enabled: true
+        extraArgs:
+          - "--store=prometheus-kubeaddons-prom-prometheus.kubeaddons.svc:10901"
+          - "--query.auto-downsampling"
+          - "--query.partial-response"

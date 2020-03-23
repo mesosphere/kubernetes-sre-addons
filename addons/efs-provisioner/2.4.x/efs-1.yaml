@@ -8,8 +8,8 @@ metadata:
     kubeaddons.mesosphere.io/provides: efs-provisioner
   annotations:
     catalog.kubeaddons.mesosphere.io/addon-revision: "2.4.0-1"
-    appversion.kubeaddons.mesosphere.io/aws-efs-csi-drive: "2.4.0"
-    values.chart.helm.kubeaddons.mesosphere.io/aws-efs-csi-drive: "https://raw.githubusercontent.com/helm/charts/9e152a4ea0fe44e21cca290396e287990c99978a/stable/efs-provisioner/values.yaml"
+    appversion.kubeaddons.mesosphere.io/efs-provisioner: "2.4.0"
+    values.chart.helm.kubeaddons.mesosphere.io/efs-provisioner: "https://raw.githubusercontent.com/helm/charts/9e152a4ea0fe44e21cca290396e287990c99978a/stable/efs-provisioner/values.yaml"
 spec:
   namespace: kube-system
   kubernetes:

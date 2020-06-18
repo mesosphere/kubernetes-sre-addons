@@ -19,8 +19,8 @@ spec:
       enabled: true
   chartReference:
     chart: efs-provisioner
-    repo: stable/efs-provisioner
-    version: 0.11.0
+    repo: https://kubernetes-charts.storage.googleapis.com
+    version: 0.11.1
     values: |
       ---
       image:

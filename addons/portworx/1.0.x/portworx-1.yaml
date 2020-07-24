@@ -30,7 +30,7 @@ spec:
       enabled: true
   chartReference:
     chart: portworx
-    repo: https://portworx.gihub.io/helm/charts
+    repo: https://portworx.github.io/helm/charts
     version: 1.0.0
     values: |
       ---

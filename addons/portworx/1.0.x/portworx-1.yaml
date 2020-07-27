@@ -74,7 +74,7 @@ spec:
       internalKVDB: false                   # internal KVDB
 
       etcd:
-        credentials: none:none              # Username and password for ETCD authentication in the form user:password
+        credentials: none              # Username and password for ETCD authentication in the form user:password
         certPath: none                      # Base path where the certificates are placed. (example: if the certificates ca,crt and the key are in /etc/pwx/etcdcerts the value should be provided as /etc/pwx/etcdcerts)
         ca: none                            # Location of CA file for ETCD authentication. Should be /path/to/server.ca
         cert: none                          # Location of certificate for ETCD authentication. Should be /path/to/server.crt

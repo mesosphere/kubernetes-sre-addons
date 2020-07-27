@@ -7,7 +7,7 @@ metadata:
     kubeaddons.mesosphere.io/name: portworx
     kubeaddons.mesosphere.io/provides: portworx
   annotations:
-    catalog.kubeaddons.mesosphere.io/addon-revision: "1.0.0-2"
+    catalog.kubeaddons.mesosphere.io/addon-revision: "1.0.0-3"
     appversion.kubeaddons.mesosphere.io/portworx: "2.5.1"
     values.chart.helm.kubeaddons.mesosphere.io/portworx: "https://raw.githubusercontent.com/portworx/helm/master/charts/portworx/values.yaml"
 spec:
@@ -31,7 +31,7 @@ spec:
   chartReference:
     chart: portworx
     repo: https://github.com/portworx/helm/charts
-    version: master
+    version: 1.0.0
     values: |
       ---
       deploymentType: oci                     # accepts "oci" or "docker"

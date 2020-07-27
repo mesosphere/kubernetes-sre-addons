@@ -7,7 +7,7 @@ metadata:
     kubeaddons.mesosphere.io/name: portworx
     kubeaddons.mesosphere.io/provides: portworx
   annotations:
-    catalog.kubeaddons.mesosphere.io/addon-revision: "1.0.0-1"
+    catalog.kubeaddons.mesosphere.io/addon-revision: "1.0.0-2"
     appversion.kubeaddons.mesosphere.io/portworx: "2.5.1"
     values.chart.helm.kubeaddons.mesosphere.io/portworx: "https://raw.githubusercontent.com/portworx/helm/master/charts/portworx/values.yaml"
 spec:
@@ -30,8 +30,8 @@ spec:
       enabled: true
   chartReference:
     chart: portworx
-    repo: https://portworx.github.io/helm/charts
-    version: 1.0.0
+    repo: https://github.com/portworx/helm/charts
+    version: master
     values: |
       ---
       deploymentType: oci                     # accepts "oci" or "docker"
@@ -74,7 +74,7 @@ spec:
       internalKVDB: false                   # internal KVDB
 
       etcd:
-        credentials: none              # Username and password for ETCD authentication in the form user:password
+        credentials: none                   # Username and password for ETCD authentication in the form user:password
         certPath: none                      # Base path where the certificates are placed. (example: if the certificates ca,crt and the key are in /etc/pwx/etcdcerts the value should be provided as /etc/pwx/etcdcerts)
         ca: none                            # Location of CA file for ETCD authentication. Should be /path/to/server.ca
         cert: none                          # Location of certificate for ETCD authentication. Should be /path/to/server.crt

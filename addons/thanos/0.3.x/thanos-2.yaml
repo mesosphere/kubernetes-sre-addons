@@ -7,11 +7,11 @@ metadata:
   labels:
     kubeaddons.mesosphere.io/name: thanos
   annotations:
-    catalog.kubeaddons.mesosphere.io/addon-revision: "0.3.14-1"
-    appversion.kubeaddons.mesosphere.io/thanos: "0.3.14"
+    catalog.kubeaddons.mesosphere.io/addon-revision: "0.3.31-1"
+    appversion.kubeaddons.mesosphere.io/thanos: "0.3.31"
     endpoint.kubeaddons.mesosphere.io/thanos: "/ops/portal/thanos"
     docs.kubeaddons.mesosphere.io/thanos: "https://thanos.io/getting-started.md/"
-    values.chart.helm.kubeaddons.mesosphere.io/thanos: "https://raw.githubusercontent.com/banzaicloud/banzai-charts/4a2e5274e8149c5c7d02583a6f2f109663c1b94e/thanos/values.yaml"
+    values.chart.helm.kubeaddons.mesosphere.io/thanos: "https://raw.githubusercontent.com/banzaicloud/banzai-charts/862a85ce67c36afbaf790fe4092d966c21d2bb1c/thanos/values.yaml"
 spec:
   kubernetes:
     minSupportedVersion: v1.15.6
@@ -32,7 +32,7 @@ spec:
   chartReference:
     chart: thanos
     repo: https://kubernetes-charts.banzaicloud.com
-    version: 0.3.18
+    version: 0.3.31
     values: |
       ---
       store:

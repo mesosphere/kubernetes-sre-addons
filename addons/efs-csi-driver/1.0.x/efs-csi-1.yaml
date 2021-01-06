@@ -20,7 +20,7 @@ spec:
   chartReference:
     chart: aws-efs-csi-driver
     repo: https://kubernetes-sigs.github.io/aws-efs-csi-driver
-    version: 0.3.0
+    version: 0.1.0
     values: |
       ---
       replicaCount: 2

@@ -19,7 +19,7 @@ spec:
       enabled: true
   chartReference:
     chart: aws-efs-csi-driver
-    repo: https://kubernetes-sigs.github.io
+    repo: https://kubernetes-sigs.github.io/aws-efs-csi-driver
     version: 0.3.0
     values: |
       ---
@@ -54,20 +54,5 @@ spec:
         tolerations: []
       logLevel: 5
       hostAliases: {}
-        # for cross VPC EFS, you need to poison or overwrite the DNS for the efs volume as per
-        # https://docs.aws.amazon.com/efs/latest/ug/efs-different-vpc.html#wt6-efs-utils-step3
-        # implementing the suggested solution found here:
-        # https://github.com/kubernetes-sigs/aws-efs-csi-driver/issues/240#issuecomment-676849346
-        # EFS Vol ID, IP, Region
-        # "fs-01234567":
-        #   ip: 10.10.2.2
-        #   region: us-east-2
       dnsPolicy: ""
       dnsConfig: {}
-      serviceAccount:
-        # Specifies whether a service account should be created
-        create: true
-        annotations: {}
-        ## Enable if EKS IAM for SA is used
-        #  eks.amazonaws.com/role-arn: arn:aws:iam::111122223333:role/efs-csi-role
-        name: efs-csi-controller-sa

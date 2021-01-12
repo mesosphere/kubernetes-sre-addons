@@ -19,8 +19,8 @@ spec:
       enabled: true
   chartReference:
     chart: aws-efs-csi-driver
-    repo: https://kubernetes-sigs.github.io/aws-efs-csi-driver
-    version: 0.1.0
+    repo: https://geekbass.github.io/aws-efs-csi-driver
+    version: 0.3.1
     values: |
       ---
       replicaCount: 2
@@ -56,3 +56,8 @@ spec:
       hostAliases: {}
       dnsPolicy: ""
       dnsConfig: {}
+      
+      # Optional Configs:
+      peristentVolumes: {}
+      persistentVolumeClaims: {}
+      storageClass: {}

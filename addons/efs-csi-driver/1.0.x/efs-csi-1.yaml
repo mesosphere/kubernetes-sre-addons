@@ -35,9 +35,6 @@ spec:
         nodeDriverRegistrarImage:
           repository: quay.io/k8scsi/csi-node-driver-registrar
           tag: "v1.3.0"
-        csiProvisionerImage:
-          repository: k8s.gcr.io/sig-storage/csi-provisioner
-          tag: "v2.0.2"
       podAnnotations: {}
         # iam.amazonaws.com/role: efs-csi-driver-role
       resources: {}

@@ -20,7 +20,7 @@ spec:
   chartReference:
     chart: aws-efs-csi-driver
     repo: https://geekbass.github.io/aws-efs-csi-driver
-    version: 0.3.1
+    version: 1.0.0
     values: |
       ---
       replicaCount: 2

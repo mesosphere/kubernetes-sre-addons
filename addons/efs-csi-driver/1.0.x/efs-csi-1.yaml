@@ -1,0 +1,60 @@
+---
+apiVersion: kubeaddons.mesosphere.io/v1beta1
+kind: ClusterAddon
+metadata:
+  name: efs-csi-driver
+  labels:
+    kubeaddons.mesosphere.io/name: efs-csi-driver
+    kubeaddons.mesosphere.io/provides: efs-csi-driver
+  annotations:
+    catalog.kubeaddons.mesosphere.io/addon-revision: "1.0.0-1"
+    appversion.kubeaddons.mesosphere.io/efs-csi-driver: "1.0.0"
+    values.chart.helm.kubeaddons.mesosphere.io/efs-csi-driver: "https://raw.githubusercontent.com/kubernetes-sigs/aws-efs-csi-driver/f2fc7cee45cf87ad8bd73ccc3280b99e1b75dc8b/helm/values.yaml"
+spec:
+  namespace: kube-system
+  kubernetes:
+    minSupportedVersion: v1.15.6
+  cloudProvider:
+    - name: aws
+      enabled: true
+  chartReference:
+    chart: aws-efs-csi-driver
+    repo: https://geekbass.github.io/aws-efs-csi-driver
+    version: 1.0.0
+    values: |
+      ---
+      replicaCount: 2
+      image:
+        repository: amazon/aws-efs-csi-driver
+        tag: "v1.0.0"
+        pullPolicy: IfNotPresent
+      sidecars:
+        livenessProbeImage:
+          repository: quay.io/k8scsi/livenessprobe
+          tag: "v2.0.0"
+        nodeDriverRegistrarImage:
+          repository: quay.io/k8scsi/csi-node-driver-registrar
+          tag: "v1.3.0"
+      podAnnotations: {}
+        # iam.amazonaws.com/role: efs-csi-driver-role
+      resources: {}
+      tolerations:
+        - effect: NoSchedule
+          operator: Exists
+        - effect: NoExecute
+          operator: Exists
+        - key: CriticalAddonsOnly
+          operator: Exists
+      affinity: {}
+      node:
+        podAnnotations: {}
+        tolerations: []
+      logLevel: 5
+      hostAliases: {}
+      dnsPolicy: ""
+      dnsConfig: {}
+      
+      # Optional Configs:
+      peristentVolumes: {}
+      persistentVolumeClaims: {}
+      storageClass: {}
